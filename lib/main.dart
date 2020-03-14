@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:storyexample/whatsapp.dart';
 
 void main() => runApp(MyApp());
 
@@ -77,7 +78,11 @@ class NavigationPage extends StatelessWidget {
               title: "Whatsapp Custom Story",
               description: "Demo on full page stories with customizations",
               icon: Image.asset("assets/images/whatsapp.png"),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Whatsapp()),
+                );
+              },
             ),
             Expanded(
               child: SizedBox(),
