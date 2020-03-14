@@ -1,0 +1,27 @@
+{
+  "data": {
+    "title": "The future of electronics and AI. Good or Better?",
+    "highlights": [
+      {
+        "image": "https://api.time.com/wp-content/uploads/2014/08/140818_inv_futuregoogle_car.jpg?w=600&quality=85",
+        "headline": "Assitant, Alexa, Tesla, self driving taxis. The direction we're taking."
+      },
+      {
+        "image": "https://specials-images.forbesimg.com/imageserve/5e6bacf9aa5428000759c44e/960x0.jpg?fit=scale",
+        "headline": "The women defining the 21st century AI movement"
+      },
+      {
+        "image": "https://inteng-storage.s3.amazonaws.com/img/iea/3oOpDZ3dOW/sizes/quantum-state-technologics_resize_md.jpg",
+        "headline": "Quantum states achieved in everyday technology"
+      },
+      {
+        "image": "https://inteng-storage.s3.amazonaws.com/img/iea/3oOpDZ3dOW/sizes/quantum-state-technologics_resize_md.jpg",
+        "headline": "Gaming getting better and better. High refresh rates becoming a norm. Low latency internet,"
+      },
+      {
+        "image": "https://static.scientificamerican.com/blogs/cache/file/A99AB2E5-7382-492D-9578205B8075F997_source.jpg?w=590&h=800&1A335336-6D48-41F3-9F1B486CDC096F8A",
+        "headline": "Do we really need to send humans into Space?"
+      }
+    ]
+  }
+}

@@ -1,12 +1,19 @@
-enum MediaType { image, video }
+enum MediaType { image, video, text }
 
 class WhatsappStory {
   final MediaType mediaType;
   final String media;
   final double duration;
   final String caption;
+  final String when;
 
-  WhatsappStory({this.mediaType, this.media, this.duration, this.caption});
+  WhatsappStory({
+    this.mediaType,
+    this.media,
+    this.duration,
+    this.caption,
+    this.when,
+  });
 }
 
 class Highlight {
@@ -28,7 +35,7 @@ class Repository {
     return [];
   }
 
-  Future<List<Gnews>> getNews() async {
-    return [];
+  Future<Gnews> getNews() async {
+    return null;
   }
 }
