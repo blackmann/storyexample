@@ -6,6 +6,7 @@ Enjoy.
 
 <p float="left">
   <img src="https://i.ibb.co/7rP7RJj/Screenshot-1584260393.png" width=400 />
-  <img src="https://i.ibb.co/G9qmB87/whatsapp.gif" width=400 />
-  <img src="https://i.ibb.co/YZ98ntY/gnews.gif" width=400 />
 </p>
+
+Watch demo on youtube: [story_view demo](https://youtu.be/yHAVCsWEKQE)
+[![Youtube](https://img.youtube.com/vi/yHAVCsWEKQE/maxresdefault.jpg)](https://youtu.be/yHAVCsWEKQE)
