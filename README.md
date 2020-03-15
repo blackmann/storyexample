@@ -1,16 +1,11 @@
 # storyexample
 
-A new Flutter project.
+A demo project exhibiting the usage of the [story_view](https://github.com/blackmann/story_view.git) library.
 
-## Getting Started
+Enjoy.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p float="left">
+  <img src="https://i.ibb.co/7rP7RJj/Screenshot-1584260393.png" width=400 />
+  <img src="https://i.ibb.co/G9qmB87/whatsapp.gif" width=400 />
+  <img src="https://i.ibb.co/YZ98ntY/gnews.gif" width=400 />
+</p>
