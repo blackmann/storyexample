@@ -2,46 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:storyexample/repository.dart';
 import 'package:story_view/story_view.dart';
 import 'package:storyexample/util.dart';
+import 'package:storyexample/widgets.dart';
 
 class Whatsapp extends StatelessWidget {
-  Widget _errorView() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        padding: EdgeInsets.all(8),
-        child: Row(
-          children: <Widget>[
-            Icon(
-              Icons.cancel,
-              color: Colors.red,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Text("An error occured while loading stories.")
-          ],
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          "Story Demo",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-          ),
-        ),
-      ),
       body: FutureBuilder(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -51,7 +17,7 @@ class Whatsapp extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
-            return _errorView();
+            return ErrorView();
           }
 
           return Center(
@@ -90,6 +56,9 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
           StoryItem.text(
             story.caption,
             HexColor(story.color),
+            duration: Duration(
+              milliseconds: (story.duration * 1000).toInt(),
+            ),
           ),
         );
       }
@@ -99,6 +68,9 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
           story.media,
           controller: controller,
           caption: story.caption,
+          duration: Duration(
+            milliseconds: (story.duration * 1000).toInt(),
+          ),
         ));
       }
 
@@ -120,6 +92,9 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
     return StoryView(
       storyItems,
       controller: controller,
+      onComplete: () {
+        Navigator.of(context).pop();
+      },
     );
   }
 }

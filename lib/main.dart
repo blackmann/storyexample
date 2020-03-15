@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:storyexample/gnews.dart';
 import 'package:storyexample/whatsapp.dart';
 
 void main() => runApp(MyApp());
@@ -69,7 +70,11 @@ class NavigationPage extends StatelessWidget {
               description:
                   "A look at inline stories just like Google News highlights",
               icon: Image.asset("assets/images/gnews.png"),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => GnewsView()),
+                );
+              },
             ),
             SizedBox(
               height: 16,
