@@ -8,8 +8,8 @@ class GnewsView extends StatelessWidget {
   // story view here
   Widget _buildHighlights(List<Highlight> highlights) {
     final stories = highlights.map<StoryItem>((it) {
-      return StoryItem.inlineGif(
-        it.image,
+      return StoryItem.inlineImage(
+        url: it.image,
         caption: Text(
           it.headline,
           style: TextStyle(
@@ -24,7 +24,7 @@ class GnewsView extends StatelessWidget {
     }).toList();
 
     return StoryView(
-      stories,
+      storyItems: stories,
       repeat: true,
       inline: true,
       progressPosition: ProgressPosition.bottom,

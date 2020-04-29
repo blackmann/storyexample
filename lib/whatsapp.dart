@@ -56,8 +56,8 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
       if (story.mediaType == MediaType.text) {
         storyItems.add(
           StoryItem.text(
-            story.caption,
-            HexColor(story.color),
+            title: story.caption,
+            backgroundColor: HexColor(story.color),
             duration: Duration(
               milliseconds: (story.duration * 1000).toInt(),
             ),
@@ -66,8 +66,8 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
       }
 
       if (story.mediaType == MediaType.image) {
-        storyItems.add(StoryItem.pageGif(
-          story.media,
+        storyItems.add(StoryItem.pageImage(
+          url: story.media,
           controller: controller,
           caption: story.caption,
           duration: Duration(
@@ -138,10 +138,15 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
     return Stack(
       children: <Widget>[
         StoryView(
-          storyItems,
+          storyItems: storyItems,
           controller: controller,
           onComplete: () {
             Navigator.of(context).pop();
+          },
+          onVerticalSwipeComplete: (v) {
+            if (v == Direction.down) {
+              Navigator.pop(context);
+            }
           },
           onStoryShow: (storyItem) {
             int pos = storyItems.indexOf(storyItem);
