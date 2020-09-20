@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:storyexample/repository.dart';
 import 'package:story_view/story_view.dart';
@@ -49,6 +51,8 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
 
   String when = "";
 
+  bool showCommment = false;
+
   @override
   void initState() {
     super.initState();
@@ -92,38 +96,53 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
   }
 
   Widget _buildProfileView() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        CircleAvatar(
-          radius: 24,
-          backgroundImage: NetworkImage(
-              "https://avatars2.githubusercontent.com/u/5024388?s=460&u=d260850b9267cf89188499695f8bcf71e743f8a7&v=4"),
-        ),
-        SizedBox(
-          width: 16,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Not Grッ",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-              ),
-              Text(
-                when,
-                style: TextStyle(
-                  color: Colors.white38,
-                ),
-              )
-            ],
+    return GestureDetector(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          CircleAvatar(
+            radius: 24,
+            backgroundImage: NetworkImage(
+                "https://avatars2.githubusercontent.com/u/5024388?s=460&u=d260850b9267cf89188499695f8bcf71e743f8a7&v=4"),
           ),
-        )
-      ],
+          SizedBox(
+            width: 16,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  "Not Grッ",
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+                Text(
+                  when,
+                  style: TextStyle(
+                    color: Colors.white38,
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+      onTap: () {
+        if (showCommment) {
+          controller.play();
+          setState(() {
+            showCommment = false;
+          });
+        } else {
+          controller.pause();
+          setState(() {
+            showCommment = true;
+          });
+        }
+      },
     );
   }
 
@@ -169,7 +188,26 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
             right: 16,
           ),
           child: _buildProfileView(),
-        )
+        ),
+        showCommment
+            ? Align(
+                alignment: Alignment.bottomCenter,
+                child: TextField(
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                  decoration: InputDecoration(),
+                  autofocus: true,
+                  onSubmitted: (value) {
+                    setState(() {
+                      showCommment = false;
+                      controller.play();
+                    });
+                  },
+                ),
+              )
+            : SizedBox(),
       ],
     );
   }
