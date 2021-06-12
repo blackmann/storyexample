@@ -8,7 +8,7 @@ class Whatsapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
+      body: FutureBuilder<List<WhatsappStory>>(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return StoryViewDelegate(
@@ -35,7 +35,7 @@ class Whatsapp extends StatelessWidget {
 }
 
 class StoryViewDelegate extends StatefulWidget {
-  final List<WhatsappStory> stories;
+  final List<WhatsappStory>? stories;
 
   StoryViewDelegate({this.stories});
 
@@ -47,19 +47,19 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
   final StoryController controller = StoryController();
   List<StoryItem> storyItems = [];
 
-  String when = "";
+  String? when = "";
 
   @override
   void initState() {
     super.initState();
-    widget.stories.forEach((story) {
+    widget.stories!.forEach((story) {
       if (story.mediaType == MediaType.text) {
         storyItems.add(
           StoryItem.text(
-            title: story.caption,
-            backgroundColor: HexColor(story.color),
+            title: story.caption!,
+            backgroundColor: HexColor(story.color!),
             duration: Duration(
-              milliseconds: (story.duration * 1000).toInt(),
+              milliseconds: (story.duration! * 1000).toInt(),
             ),
           ),
         );
@@ -67,11 +67,11 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
 
       if (story.mediaType == MediaType.image) {
         storyItems.add(StoryItem.pageImage(
-          url: story.media,
+          url: story.media!,
           controller: controller,
           caption: story.caption,
           duration: Duration(
-            milliseconds: (story.duration * 1000).toInt(),
+            milliseconds: (story.duration! * 1000).toInt(),
           ),
         ));
       }
@@ -79,16 +79,16 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
       if (story.mediaType == MediaType.video) {
         storyItems.add(
           StoryItem.pageVideo(
-            story.media,
+            story.media!,
             controller: controller,
-            duration: Duration(milliseconds: (story.duration * 1000).toInt()),
+            duration: Duration(milliseconds: (story.duration! * 1000).toInt()),
             caption: story.caption,
           ),
         );
       }
     });
 
-    when = widget.stories[0].when;
+    when = widget.stories![0].when;
   }
 
   Widget _buildProfileView() {
@@ -115,7 +115,7 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
                     color: Colors.white),
               ),
               Text(
-                when,
+                when!,
                 style: TextStyle(
                   color: Colors.white38,
                 ),
@@ -157,7 +157,7 @@ class _StoryViewDelegateState extends State<StoryViewDelegate> {
             // (each child need to be laid exactly once)
             if (pos > 0) {
               setState(() {
-                when = widget.stories[pos].when;
+                when = widget.stories![pos].when;
               });
             }
           },

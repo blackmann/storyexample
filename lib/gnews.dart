@@ -9,9 +9,9 @@ class GnewsView extends StatelessWidget {
   Widget _buildHighlights(List<Highlight> highlights) {
     final stories = highlights.map<StoryItem>((it) {
       return StoryItem.inlineImage(
-        url: it.image,
+        url: it.image!,
         caption: Text(
-          it.headline,
+          it.headline!,
           style: TextStyle(
             backgroundColor: Colors.black54,
             fontSize: 16,
@@ -140,7 +140,7 @@ class GnewsView extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    news.title,
+                    news.title!,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -163,7 +163,7 @@ class GnewsView extends StatelessWidget {
         ),
         SizedBox(
           height: 250,
-          child: _buildHighlights(news.highlights),
+          child: _buildHighlights(news.highlights!),
         ),
         _buildCoverageButton(),
         SizedBox(
@@ -201,10 +201,10 @@ class GnewsView extends StatelessWidget {
           },
         ),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<Gnews>(
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return _buildNews(snapshot.data);
+            return _buildNews(snapshot.data!);
           }
 
           if (snapshot.hasError) {

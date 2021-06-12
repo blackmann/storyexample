@@ -5,12 +5,12 @@ import 'package:http/http.dart';
 enum MediaType { image, video, text }
 
 class WhatsappStory {
-  final MediaType mediaType;
-  final String media;
-  final double duration;
-  final String caption;
-  final String when;
-  final String color;
+  final MediaType? mediaType;
+  final String? media;
+  final double? duration;
+  final String? caption;
+  final String? when;
+  final String? color;
 
   WhatsappStory({
     this.mediaType,
@@ -23,15 +23,15 @@ class WhatsappStory {
 }
 
 class Highlight {
-  final String image;
-  final String headline;
+  final String? image;
+  final String? headline;
 
   Highlight({this.image, this.headline});
 }
 
 class Gnews {
-  final String title;
-  final List<Highlight> highlights;
+  final String? title;
+  final List<Highlight>? highlights;
 
   Gnews({this.title, this.highlights});
 }
@@ -39,7 +39,7 @@ class Gnews {
 /// The repository fetches the data from the same directory from git.
 /// This is just to demonstrate fetching from a remote (workflow).
 class Repository {
-  static MediaType _translateType(String type) {
+  static MediaType _translateType(String? type) {
     if (type == "image") {
       return MediaType.image;
     }
@@ -52,8 +52,9 @@ class Repository {
   }
 
   static Future<List<WhatsappStory>> getWhatsappStories() async {
-    final response = await get(
-        "https://raw.githubusercontent.com/blackmann/storyexample/master/lib/data/whatsapp.json");
+    final uri =
+        "https://raw.githubusercontent.com/blackmann/storyexample/master/lib/data/whatsapp.json";
+    final response = await get(Uri.parse(uri));
 
     final data = jsonDecode(utf8.decode(response.bodyBytes))['data'];
 
@@ -71,8 +72,9 @@ class Repository {
   }
 
   static Future<Gnews> getNews() async {
-    final response = await get(
-        "https://raw.githubusercontent.com/blackmann/storyexample/master/lib/data/gnews.json");
+    final uri =
+        "https://raw.githubusercontent.com/blackmann/storyexample/master/lib/data/gnews.json";
+    final response = await get(Uri.parse(uri));
 
     // use utf8.decode to make emojis work
     final data = jsonDecode(utf8.decode(response.bodyBytes))['data'];

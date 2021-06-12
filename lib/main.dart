@@ -117,10 +117,10 @@ class NavigationPage extends StatelessWidget {
 }
 
 class NavigationItem extends StatelessWidget {
-  final VoidCallback onTap;
-  final String title;
-  final String description;
-  final Image icon;
+  final VoidCallback? onTap;
+  final String? title;
+  final String? description;
+  final Image? icon;
 
   NavigationItem({
     this.title,
@@ -135,7 +135,7 @@ class NavigationItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            title,
+            title!,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -145,7 +145,7 @@ class NavigationItem extends StatelessWidget {
             height: 8,
           ),
           Text(
-            description,
+            description!,
             style: TextStyle(
               color: Colors.grey,
               fontSize: 16,
