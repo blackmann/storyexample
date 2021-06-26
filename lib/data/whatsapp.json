@@ -18,7 +18,7 @@
     },
     {
       "mediaType": "video",
-      "media": "http://techslides.com/demos/sample-videos/small.mp4",
+      "media": "https://raw.githubusercontent.com/blackmann/storyexample/master/assets/small.mp4",
       "duration": "4.0",
       "caption": "robo robo. robo me.",
       "when": "2 hours ago",
